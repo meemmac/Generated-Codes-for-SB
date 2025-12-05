@@ -1,0 +1,23 @@
+{
+"title": "Run Length Encoding (RLE)",
+"subtitle": "Compress a string by replacing consecutive repeated characters with the character and its count",
+"time_complexity": "O(N)",
+"space_complexity": "O(N)",
+"category": "Strings / Compression",
+"code": [
+    "def run_length_encoding(s):",
+    "    if not s:",
+    "        return ''",
+    "    result = []",
+    "    count = 1",
+    "    for i in range(1, len(s)):",
+    "        if s[i] == s[i - 1]:",
+    "            count += 1",
+    "        else:",
+    "            result.append(s[i - 1] + str(count))",
+    "            count = 1",
+    "    result.append(s[-1] + str(count))",
+    "    return ''.join(result)"
+],
+"additional_information": "RLE is useful for compressing sequences with repeated characters. It reduces memory usage and is often used in simple data compression tasks."
+}
