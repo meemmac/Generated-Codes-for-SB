@@ -1,0 +1,30 @@
+{
+"title": "Sqrt Decomposition (Block Decomposition)",
+"subtitle": "Divide an array into blocks to answer range queries efficiently",
+"time_complexity": "O(sqrt(N)) per query",
+"space_complexity": "O(sqrt(N))",
+"category": "Data Structure / Decomposition",
+"code": [
+    "import math",
+    "def sqrt_decomposition(arr):",
+    "    n = len(arr)",
+    "    block_size = int(math.sqrt(n)) + 1",
+    "    blocks = [0]*block_size",
+    "    for i in range(n):",
+    "        blocks[i // block_size] += arr[i]",
+    "    def query(l, r):",
+    "        sum_ = 0",
+    "        while l <= r and l % block_size != 0 and l != 0:",
+    "            sum_ += arr[l]",
+    "            l += 1",
+    "        while l + block_size - 1 <= r:",
+    "            sum_ += blocks[l // block_size]",
+    "            l += block_size",
+    "        while l <= r:",
+    "            sum_ += arr[l]",
+    "            l += 1",
+    "        return sum_",
+    "    return query"
+],
+"additional_information": "Sqrt decomposition splits the array into blocks for efficient range queries and updates. Simpler than segment trees but slightly slower."
+}
