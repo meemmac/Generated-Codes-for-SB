@@ -1,0 +1,26 @@
+{
+"title": "Topological Sort (DFS)",
+"subtitle": "Order vertices in a directed acyclic graph (DAG) linearly such that for every edge u→v, u comes before v",
+"time_complexity": "O(V + E)",
+"space_complexity": "O(V)",
+"category": "Graph / Sorting",
+"code": [
+    "def topological_sort_dfs(graph):",
+    "    visited = set()",
+    "    stack = []",
+    "",
+    "    def dfs(node):",
+    "        visited.add(node)",
+    "        for neighbor in graph.get(node, []):",
+    "            if neighbor not in visited:",
+    "                dfs(neighbor)",
+    "        stack.append(node)",
+    "",
+    "    for vertex in graph:",
+    "        if vertex not in visited:",
+    "            dfs(vertex)",
+    "",
+    "    return stack[::-1]"
+],
+"additional_information": "Topological sorting is used in scheduling tasks, build systems, and resolving dependencies in directed acyclic graphs (DAGs)."
+}
