@@ -1,0 +1,32 @@
+{
+"title": "Topological Sort",
+"subtitle": "Linear ordering of DAG nodes based on dependencies",
+"time_complexity": "O(V + E)",
+"space_complexity": "O(V)",
+"category": "Graph Algorithm",
+"code": [
+    "from collections import deque",
+    "",
+    "def topological_sort(graph):",
+    "    in_degree = {u: 0 for u in graph}",
+    "",
+    "    for u in graph:",
+    "        for v in graph[u]:",
+    "            in_degree[v] += 1",
+    "",
+    "    queue = deque([u for u in graph if in_degree[u] == 0])",
+    "    order = []",
+    "",
+    "    while queue:",
+    "        u = queue.popleft()",
+    "        order.append(u)",
+    "",
+    "        for v in graph[u]:",
+    "            in_degree[v] -= 1",
+    "            if in_degree[v] == 0:",
+    "                queue.append(v)",
+    "",
+    "    return order"
+],
+"additional_information": "Topological sorting applies only to Directed Acyclic Graphs (DAGs) and reveals the dependency order among tasks."
+}
