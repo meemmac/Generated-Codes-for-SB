@@ -1,0 +1,17 @@
+{
+"title": "Fisher–Yates Shuffle (Random Shuffle)",
+"subtitle": "Randomly shuffle elements in an array uniformly",
+"time_complexity": "O(N)",
+"space_complexity": "O(1)",
+"category": "Randomization / Array",
+"code": [
+    "import random",
+    "def fisher_yates_shuffle(arr):",
+    "    n = len(arr)",
+    "    for i in range(n - 1, 0, -1):",
+    "        j = random.randint(0, i)",
+    "        arr[i], arr[j] = arr[j], arr[i]",
+    "    return arr"
+],
+"additional_information": "Fisher–Yates shuffle generates a random permutation of an array uniformly. Each possible permutation has an equal probability."
+}
