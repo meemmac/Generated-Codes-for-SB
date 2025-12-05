@@ -1,0 +1,28 @@
+{
+"title": "Iterative Deepening DFS (IDDFS)",
+"subtitle": "Combine DFS’s space efficiency with BFS’s completeness",
+"time_complexity": "O(b^d)",
+"space_complexity": "O(d)",
+"category": "Graph / Search",
+"code": [
+    "def iddfs(start, target, graph, max_depth):",
+    "    for depth in range(max_depth + 1):",
+    "        visited = set()",
+    "        if dls(start, target, depth, graph, visited):",
+    "            return True",
+    "    return False",
+    "",
+    "def dls(node, target, depth, graph, visited):",
+    "    if depth < 0:",
+    "        return False",
+    "    if node == target:",
+    "        return True",
+    "    visited.add(node)",
+    "    for neighbor in graph.get(node, []):",
+    "        if neighbor not in visited:",
+    "            if dls(neighbor, target, depth - 1, graph, visited):",
+    "                return True",
+    "    return False"
+],
+"additional_information": "IDDFS repeatedly applies depth-limited search with increasing depth limits, useful in large or infinite state spaces."
+}
