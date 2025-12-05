@@ -1,0 +1,27 @@
+{
+"title": "Treap (Cartesian Tree)",
+"subtitle": "Randomized balanced BST combining heap and BST properties",
+"time_complexity": "O(log N) average per operation",
+"space_complexity": "O(N)",
+"category": "Data Structure / BST",
+"code": [
+    "import random",
+    "class Node:",
+    "    def __init__(self, key):",
+    "        self.key = key",
+    "        self.priority = random.randint(1, 1000000)",
+    "        self.left = self.right = None",
+    "def rotate_right(y):",
+    "    x = y.left",
+    "    y.left = x.right",
+    "    x.right = y",
+    "    return x",
+    "def rotate_left(x):",
+    "    y = x.right",
+    "    x.right = y.left",
+    "    y.left = x",
+    "    return y",
+    "# Insert, delete, split, merge functions can be added based on standard Treap implementation"
+],
+"additional_information": "Treap maintains BST property on keys and heap property on random priorities. Provides balanced BST operations with high probability."
+}
