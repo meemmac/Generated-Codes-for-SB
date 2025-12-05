@@ -1,0 +1,17 @@
+{
+"title": "Climbing Stairs / Ways to Reach Nth Step (DP)",
+"subtitle": "Count the number of distinct ways to reach the top of stairs",
+"time_complexity": "O(N)",
+"space_complexity": "O(1)",
+"category": "Dynamic Programming",
+"code": [
+    "def climb_stairs(n):",
+    "    if n <= 1:",
+    "        return 1",
+    "    a, b = 1, 1",
+    "    for _ in range(2, n + 1):",
+    "        a, b = b, a + b",
+    "    return b"
+],
+"additional_information": "This DP problem is analogous to Fibonacci sequence. Each step can be reached either from one step before or two steps before."
+}
