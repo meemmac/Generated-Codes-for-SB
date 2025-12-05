@@ -1,0 +1,30 @@
+{
+"title": "Z Algorithm",
+"subtitle": "Compute the Z-array for pattern matching in linear time",
+"time_complexity": "O(N + M)",
+"space_complexity": "O(N + M)",
+"category": "String / Pattern Matching",
+"code": [
+    "def compute_z(s):",
+    "    n = len(s)",
+    "    z = [0] * n",
+    "    l = r = 0",
+    "    for i in range(1, n):",
+    "        if i <= r:",
+    "            z[i] = min(r - i + 1, z[i - l])",
+    "        while i + z[i] < n and s[z[i]] == s[i + z[i]]:",
+    "            z[i] += 1",
+    "        if i + z[i] - 1 > r:",
+    "            l, r = i, i + z[i] - 1",
+    "    return z",
+    "",
+    "def z_search(text, pattern):",
+    "    concat = pattern + '$' + text",
+    "    z = compute_z(concat)",
+    "    for i in range(len(pattern) + 1, len(concat)):",
+    "        if z[i] == len(pattern):",
+    "            return i - len(pattern) - 1",
+    "    return -1"
+],
+"additional_information": "The Z-algorithm computes an array representing the length of the longest substring starting at each position that matches the prefix, useful in pattern searching."
+}
