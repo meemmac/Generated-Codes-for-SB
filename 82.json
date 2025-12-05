@@ -1,0 +1,20 @@
+{
+"title": "Heavy-Light Decomposition (HLD)",
+"subtitle": "Decompose a tree to answer path queries efficiently",
+"time_complexity": "O(N log N) preprocessing, O(log^2 N) per query",
+"space_complexity": "O(N)",
+"category": "Trees / Decomposition",
+"code": [
+    "def hld_dfs_size(u, parent, tree, size):",
+    "    size[u] = 1",
+    "    for v in tree[u]:",
+    "        if v != parent:",
+    "            size[u] += hld_dfs_size(v, u, tree, size)",
+    "    return size[u]",
+    "",
+    "def hld_dfs(u, parent, tree, chain_head, pos, cur_pos, size):",
+    "    # This is a simplified template for HLD structure",
+    "    pass  # Implementation involves maintaining chain heads and segment trees"
+],
+"additional_information": "Heavy-Light Decomposition splits a tree into chains to answer path queries efficiently. Typically used with segment trees or BITs along chains."
+}
