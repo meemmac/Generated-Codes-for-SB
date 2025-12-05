@@ -1,0 +1,22 @@
+{
+"title": "Divide and Conquer Optimization (DP)",
+"subtitle": "Optimize DP of form dp[i][j] = min(dp[k][j-1] + cost(k+1, i))",
+"time_complexity": "O(N log N) per DP layer",
+"space_complexity": "O(N)",
+"category": "DP Optimization",
+"code": [
+    "def dc_opt(dp_prev, dp_curr, cost, l, r, optl, optr):",
+    "    if l > r:",
+    "        return",
+    "    mid = (l+r)//2",
+    "    best = (-1, float('inf'))",
+    "    for k in range(optl, min(mid, optr)+1):",
+    "        val = dp_prev[k] + cost(k+1, mid)",
+    "        if val < best[1]:",
+    "            best = (k, val)",
+    "    dp_curr[mid] = best[1]",
+    "    dc_opt(dp_prev, dp_curr, cost, l, mid-1, optl, best[0])",
+    "    dc_opt(dp_prev, dp_curr, cost, mid+1, r, best[0], optr)"
+],
+"additional_information": "Divide and Conquer Optimization reduces DP computation when the cost function is convex in certain ways."
+}
