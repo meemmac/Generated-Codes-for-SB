@@ -1,0 +1,32 @@
+{
+"title": "Count Islands in Grid (BFS)",
+"subtitle": "Count the number of connected islands (1s) in a 2D grid",
+"time_complexity": "O(M*N)",
+"space_complexity": "O(M*N) in worst case",
+"category": "Graphs / BFS",
+"code": [
+    "from collections import deque",
+    "def count_islands(grid):",
+    "    if not grid:",
+    "        return 0",
+    "    m, n = len(grid), len(grid[0])",
+    "    visited = [[False]*n for _ in range(m)]",
+    "    count = 0",
+    "    directions = [(0,1),(1,0),(-1,0),(0,-1)]",
+    "    for i in range(m):",
+    "        for j in range(n):",
+    "            if grid[i][j] == 1 and not visited[i][j]:",
+    "                queue = deque([(i,j)])",
+    "                visited[i][j] = True",
+    "                while queue:",
+    "                    x, y = queue.popleft()",
+    "                    for dx, dy in directions:",
+    "                        nx, ny = x + dx, y + dy",
+    "                        if 0 <= nx < m and 0 <= ny < n and grid[nx][ny] == 1 and not visited[nx][ny]:",
+    "                            visited[nx][ny] = True",
+    "                            queue.append((nx, ny))",
+    "                count += 1",
+    "    return count"
+],
+"additional_information": "This BFS approach traverses each island fully and counts them. DFS can be used similarly. Useful for grid and matrix connectivity problems."
+}
