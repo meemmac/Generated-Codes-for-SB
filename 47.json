@@ -1,0 +1,27 @@
+{
+"title": "Andrew's Monotone Chain (Convex Hull)",
+"subtitle": "Compute convex hull of a set of 2D points in O(n log n)",
+"time_complexity": "O(n log n)",
+"space_complexity": "O(n)",
+"category": "Computational Geometry",
+"code": [
+    "def cross(o, a, b):",
+    "    return (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0])",
+    "def convex_hull(points):",
+    "    points = sorted(set(points))",
+    "    if len(points) <= 1:",
+    "        return points",
+    "    lower = []",
+    "    for p in points:",
+    "        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0:",
+    "            lower.pop()",
+    "        lower.append(p)",
+    "    upper = []",
+    "    for p in reversed(points):",
+    "        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0:",
+    "            upper.pop()",
+    "        upper.append(p)",
+    "    return lower[:-1] + upper[:-1]"
+],
+"additional_information": "Constructs convex hull by building lower and upper chains. Handles collinear points by exclusion (<= 0 condition)."
+}
