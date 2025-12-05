@@ -1,0 +1,24 @@
+{
+"title": "Knuth Optimization (Interval DP)",
+"subtitle": "Optimize certain interval DP from O(N^3) to O(N^2)",
+"time_complexity": "O(N^2)",
+"space_complexity": "O(N^2)",
+"category": "DP Optimization",
+"code": [
+    "def knuth_optimization(dp, cost, n):",
+    "    opt = [[0]*n for _ in range(n)]",
+    "    for i in range(n):",
+    "        dp[i][i] = cost[i][i]",
+    "        opt[i][i] = i",
+    "    for length in range(2, n+1):",
+    "        for i in range(n-length+1):",
+    "            j = i+length-1",
+    "            dp[i][j] = float('inf')",
+    "            for k in range(opt[i][j-1], opt[i+1][j]+1):",
+    "                val = dp[i][k] + dp[k+1][j] + cost[i][j]",
+    "                if val < dp[i][j]:",
+    "                    dp[i][j] = val",
+    "                    opt[i][j] = k"
+],
+"additional_information": "Knuth Optimization works when the recurrence satisfies the quadrangle inequality and monotonicity of decision points."
+}
