@@ -1,0 +1,28 @@
+{
+"title": "Matrix Exponentiation",
+"subtitle": "Compute powers of a matrix efficiently, often for linear recurrences",
+"time_complexity": "O(N^3 log K)",
+"space_complexity": "O(N^2)",
+"category": "Math / DP",
+"code": [
+    "def mat_mult(a, b):",
+    "    n = len(a)",
+    "    res = [[0]*n for _ in range(n)]",
+    "    for i in range(n):",
+    "        for j in range(n):",
+    "            for k in range(n):",
+    "                res[i][j] += a[i][k]*b[k][j]",
+    "    return res",
+    "",
+    "def mat_pow(mat, power):",
+    "    n = len(mat)",
+    "    res = [[int(i==j) for j in range(n)] for i in range(n)]",
+    "    while power:",
+    "        if power % 2 == 1:",
+    "            res = mat_mult(res, mat)",
+    "        mat = mat_mult(mat, mat)",
+    "        power //= 2",
+    "    return res"
+],
+"additional_information": "Matrix exponentiation allows computing linear recurrence values in O(log N) using matrix power."
+}
