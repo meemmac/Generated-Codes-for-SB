@@ -1,0 +1,19 @@
+{
+"title": "Subset DP / Bitmask DP",
+"subtitle": "Dynamic programming on subsets represented as bitmasks",
+"time_complexity": "O(2^N * N)",
+"space_complexity": "O(2^N)",
+"category": "Dynamic Programming / Combinatorics",
+"code": [
+    "def subset_dp(values):",
+    "    n = len(values)",
+    "    dp = [0] * (1 << n)",
+    "    for mask in range(1, 1 << n):",
+    "        for i in range(n):",
+    "            if mask & (1 << i):",
+    "                dp[mask] += values[i]",
+    "                break",
+    "    return dp"
+],
+"additional_information": "Bitmask DP is useful for problems involving subsets, combinatorial counting, or travelling salesman problem variants on small N."
+}
