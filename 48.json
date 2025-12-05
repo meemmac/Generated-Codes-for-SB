@@ -1,0 +1,29 @@
+{
+"title": "Rotating Calipers (Diameter of Convex Polygon)",
+"subtitle": "Find the farthest pair of points (polygon diameter) in O(n)",
+"time_complexity": "O(n)",
+"space_complexity": "O(1)",
+"category": "Computational Geometry",
+"code": [
+    "def dist2(a, b):",
+    "    return (a[0]-b[0])**2 + (a[1]-b[1])**2",
+    "def rotating_calipers_diameter(hull):",
+    "    n = len(hull)",
+    "    if n == 1: return 0",
+    "    if n == 2: return dist2(hull[0], hull[1])",
+    "    k = 1",
+    "    while abs(cross(hull[-1], hull[0], hull[(k+1)%n])) > abs(cross(hull[-1], hull[0], hull[k])):",
+    "        k += 1",
+    "    ans = 0",
+    "    i, j = 0, k",
+    "    while i <= k and j < n:",
+    "        ans = max(ans, dist2(hull[i], hull[j]))",
+    "        # advance j while area increases",
+    "        while abs(cross(hull[i], hull[(i+1)%n], hull[(j+1)%n])) > abs(cross(hull[i], hull[(i+1)%n], hull[j])):",
+    "            j = (j + 1) % n",
+    "            ans = max(ans, dist2(hull[i], hull[j]))",
+    "        i += 1",
+    "    return ans"
+],
+"additional_information": "Apply rotating calipers on the convex hull to find the pair of points with maximal distance (squared distance returned). Assumes hull is in counterclockwise order."
+}
