@@ -1,16 +1,17 @@
-List of algorithms-
+Algorithm List
+```
 1. Kadane's Algorithm
 2. Binary Search (first instance)
-3. Quick Sort
-4. Merge Sort
-5. Bubble Sort
-6. Insertion Sort
-7. Selection Sort
+3. Merge Sort
+4. Quick Sort
+5. Dijkstra's Algorithm
+6. Bellman-Ford Algorithm
+7. Floyd-Warshall Algorithm
 8. Depth-First Search (DFS)
 9. Breadth-First Search (BFS)
-10. Dijkstra's Algorithm
-11. Bellman-Ford Algorithm
-12. Floyd-Warshall Algorithm
+10. Tarjan's Algorithm for Strongly Connected Components
+11. Kruskal's Algorithm
+12. Prims Algorithm
 13. Fibonacci Sequence (Dynamic Programming)
 14. Longest Common Subsequence (LCS)
 15. Longest Increasing Subsequence (LIS)
@@ -32,10 +33,11 @@ List of algorithms-
 31. Depth-Limited Search (DLS)
 32. Iterative Deepening DFS (IDDFS)
 33. A* Search Algorithm
-34. Binary Search (second instance)
+34. Ford-Fulkerson Algorithm
 35. Ternary Search
 36. KMP (Knuth-Morris-Pratt) String Matching
 37. Rabin-Karp String Matching
 38. Z Algorithm
 39. Manacher’s Algorithm
 40. Topological Sort (DFS)
+```
