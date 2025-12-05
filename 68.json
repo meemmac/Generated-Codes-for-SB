@@ -1,0 +1,32 @@
+{
+"title": "Sieve of Atkin",
+"subtitle": "Efficient prime number sieve using quadratic forms and modulo operations",
+"time_complexity": "O(n / log log n)",
+"space_complexity": "O(n)",
+"category": "Number Theory / Primes",
+"code": [
+    "def sieve_of_atkin(limit):",
+    "    primes = [2, 3] if limit > 2 else [2] if limit > 1 else []",
+    "    sieve = [False] * (limit + 1)",
+    "    for x in range(1, int(limit**0.5) + 1):",
+    "        for y in range(1, int(limit**0.5) + 1):",
+    "            n = 4*x*x + y*y",
+    "            if n <= limit and n % 12 in [1, 5]:",
+    "                sieve[n] = not sieve[n]",
+    "            n = 3*x*x + y*y",
+    "            if n <= limit and n % 12 == 7:",
+    "                sieve[n] = not sieve[n]",
+    "            n = 3*x*x - y*y",
+    "            if x > y and n <= limit and n % 12 == 11:",
+    "                sieve[n] = not sieve[n]",
+    "    for i in range(5, int(limit**0.5) + 1):",
+    "        if sieve[i]:",
+    "            for j in range(i*i, limit + 1, i*i):",
+    "                sieve[j] = False",
+    "    for i in range(5, limit + 1):",
+    "        if sieve[i]:",
+    "            primes.append(i)",
+    "    return primes"
+],
+"additional_information": "Sieve of Atkin is a modern prime sieve algorithm faster than Sieve of Eratosthenes for large limits, using modulo properties and quadratic forms to mark primes."
+}
