@@ -1,0 +1,33 @@
+{
+"title": "Kruskal's Algorithm",
+"subtitle": "Find the Minimum Spanning Tree (MST) of a graph using edges sorted by weight",
+"time_complexity": "O(E log E)",
+"space_complexity": "O(V)",
+"category": "Graph Algorithm",
+"code": [
+    "class DisjointSet:",
+    "    def __init__(self, n):",
+    "        self.parent = list(range(n))",
+    "",
+    "    def find(self, x):",
+    "        if self.parent[x] != x:",
+    "            self.parent[x] = self.find(self.parent[x])",
+    "        return self.parent[x]",
+    "",
+    "    def union(self, x, y):",
+    "        self.parent[self.find(x)] = self.find(y)",
+    "",
+    "def kruskal(edges, n):",
+    "    edges.sort(key=lambda x: x[2])",
+    "    ds = DisjointSet(n)",
+    "    mst = []",
+    "",
+    "    for u, v, w in edges:",
+    "        if ds.find(u) != ds.find(v):",
+    "            ds.union(u, v)",
+    "            mst.append((u, v, w))",
+    "",
+    "    return mst"
+],
+"additional_information": "Kruskal's algorithm builds the MST by repeatedly adding the smallest edge that does not form a cycle, using a disjoint-set for cycle detection."
+}
