@@ -1,0 +1,18 @@
+{
+"title": "Rod Cutting Problem",
+"subtitle": "Maximize profit by cutting a rod into pieces with given prices",
+"time_complexity": "O(N²)",
+"space_complexity": "O(N)",
+"category": "Dynamic Programming",
+"code": [
+    "def rod_cut(prices, n):",
+    "    dp = [0] * (n + 1)",
+    "    for i in range(1, n + 1):",
+    "        max_val = 0",
+    "        for j in range(i):",
+    "            max_val = max(max_val, prices[j] + dp[i - j - 1])",
+    "        dp[i] = max_val",
+    "    return dp[n]"
+],
+"additional_information": "Rod Cutting is a DP optimization problem where the goal is to determine the best way to cut a rod to maximize revenue."
+}
