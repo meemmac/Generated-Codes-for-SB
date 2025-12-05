@@ -1,0 +1,24 @@
+{
+"title": "Breadth-First Search (BFS)",
+"subtitle": "Explore a graph level by level using a queue",
+"time_complexity": "O(V + E)",
+"space_complexity": "O(V)",
+"category": "Graph Traversal",
+"code": [
+    "from collections import deque",
+    "",
+    "def bfs(graph, start):",
+    "    visited = set([start])",
+    "    queue = deque([start])",
+    "",
+    "    while queue:",
+    "        node = queue.popleft()",
+    "        for neighbor in graph[node]:",
+    "            if neighbor not in visited:",
+    "                visited.add(neighbor)",
+    "                queue.append(neighbor)",
+    "",
+    "    return visited"
+],
+"additional_information": "BFS is ideal for finding the shortest path in unweighted graphs, checking connectivity, and performing level-order traversal."
+}
