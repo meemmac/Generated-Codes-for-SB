@@ -1,0 +1,24 @@
+{
+"title": "Fast Walsh-Hadamard Transform (FWHT)",
+"subtitle": "Compute XOR-convolution, AND/OR convolutions efficiently",
+"time_complexity": "O(N log N)",
+"space_complexity": "O(N)",
+"category": "FFT / Transform",
+"code": [
+    "def fwht(a, invert=False):",
+    "    n = len(a)",
+    "    step = 1",
+    "    while step < n:",
+    "        for i in range(0, n, step*2):",
+    "            for j in range(step):",
+    "                u = a[i+j]",
+    "                v = a[i+j+step]",
+    "                a[i+j] = u + v",
+    "                a[i+j+step] = u - v",
+    "        step *= 2",
+    "    if invert:",
+    "        for i in range(n):",
+    "            a[i] //= n"
+],
+"additional_information": "FWHT is used in subset XOR convolution and some combinatorial problems."
+}
