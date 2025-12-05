@@ -1,0 +1,30 @@
+{
+"title": "Dijkstra's Algorithm",
+"subtitle": "Find the shortest path from a source to all nodes in a weighted graph",
+"time_complexity": "O((V + E) log V)",
+"space_complexity": "O(V)",
+"category": "Graph Algorithm",
+"code": [
+    "import heapq",
+    "",
+    "def dijkstra(graph, start):",
+    "    distances = {node: float('inf') for node in graph}",
+    "    distances[start] = 0",
+    "    pq = [(0, start)]",
+    "",
+    "    while pq:",
+    "        current_distance, current_node = heapq.heappop(pq)",
+    "",
+    "        if current_distance > distances[current_node]:",
+    "            continue",
+    "",
+    "        for neighbor, weight in graph[current_node]:",
+    "            distance = current_distance + weight",
+    "            if distance < distances[neighbor]:",
+    "                distances[neighbor] = distance",
+    "                heapq.heappush(pq, (distance, neighbor))",
+    "",
+    "    return distances"
+],
+"additional_information": "Dijkstra's algorithm works only with non-negative edge weights and uses a priority queue to efficiently update shortest distances."
+}
