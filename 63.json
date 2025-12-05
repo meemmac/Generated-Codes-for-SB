@@ -1,0 +1,33 @@
+{
+"title": "Gale-Shapley Algorithm",
+"subtitle": "Solve the stable marriage problem",
+"time_complexity": "O(N^2)",
+"space_complexity": "O(N^2)",
+"category": "Matching / Greedy",
+"code": [
+    "def gale_shapley(men_preferences, women_preferences):",
+    "    n = len(men_preferences)",
+    "    free_men = list(range(n))",
+    "    engaged = [-1] * n",
+    "    next_proposal = [0] * n",
+    "    women_rank = [[0]*n for _ in range(n)]",
+    "    for w in range(n):",
+    "        for rank, m in enumerate(women_preferences[w]):",
+    "            women_rank[w][m] = rank",
+    "    while free_men:",
+    "        m = free_men.pop(0)",
+    "        w = men_preferences[m][next_proposal[m]]",
+    "        next_proposal[m] += 1",
+    "        if engaged[w] == -1:",
+    "            engaged[w] = m",
+    "        else:",
+    "            m2 = engaged[w]",
+    "            if women_rank[w][m] < women_rank[w][m2]:",
+    "                engaged[w] = m",
+    "                free_men.append(m2)",
+    "            else:",
+    "                free_men.append(m)",
+    "    return engaged"
+],
+"additional_information": "Gale-Shapley algorithm finds a stable matching where no pair of man and woman would both prefer each other over their assigned partners."
+}
