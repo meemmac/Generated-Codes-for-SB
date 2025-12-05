@@ -1,7 +1,7 @@
 Algorithm List
 ```
 1. Kadane's Algorithm
-2. Binary Search (first instance)
+2. Binary Search 
 3. Merge Sort
 4. Quick Sort
 5. Dijkstra's Algorithm
