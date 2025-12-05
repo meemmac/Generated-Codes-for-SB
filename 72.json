@@ -1,0 +1,19 @@
+{
+"title": "Rot13 / Caesar Cipher",
+"subtitle": "Encrypt or decrypt text by shifting letters by a fixed number of positions",
+"time_complexity": "O(N)",
+"space_complexity": "O(N)",
+"category": "Strings / Encryption",
+"code": [
+    "def caesar_cipher(text, shift=13):",
+    "    result = []",
+    "    for char in text:",
+    "        if char.isalpha():",
+    "            offset = 65 if char.isupper() else 97",
+    "            result.append(chr((ord(char) - offset + shift) % 26 + offset))",
+    "        else:",
+    "            result.append(char)",
+    "    return ''.join(result)"
+],
+"additional_information": "Caesar Cipher is a simple substitution cipher. ROT13 is a special case with a shift of 13, where encryption and decryption are identical."
+}
