@@ -1,0 +1,24 @@
+{
+"title": "Randomized Quickselect",
+"subtitle": "Find k-th smallest/largest element in unsorted array efficiently",
+"time_complexity": "O(N) expected",
+"space_complexity": "O(1)",
+"category": "Array / Selection",
+"code": [
+    "import random",
+    "def quickselect(arr, k):",
+    "    if len(arr) == 1:",
+    "        return arr[0]",
+    "    pivot = random.choice(arr)",
+    "    lows = [el for el in arr if el < pivot]",
+    "    highs = [el for el in arr if el > pivot]",
+    "    pivots = [el for el in arr if el == pivot]",
+    "    if k <= len(lows):",
+    "        return quickselect(lows, k)",
+    "    elif k <= len(lows) + len(pivots):",
+    "        return pivot",
+    "    else:",
+    "        return quickselect(highs, k - len(lows) - len(pivots))"
+],
+"additional_information": "Quickselect is similar to quicksort but only recursively processes the relevant partition. Efficient for selection problems."
+}
