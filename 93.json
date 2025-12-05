@@ -1,0 +1,23 @@
+{
+"title": "Euler Tour Technique (Tree flattening)",
+"subtitle": "Flatten a tree to array for subtree queries",
+"time_complexity": "O(N)",
+"space_complexity": "O(N)",
+"category": "Tree / DFS / Flattening",
+"code": [
+    "def euler_tour(tree, node, parent, tour, start, end, time):",
+    "    start[node] = time[0]",
+    "    tour.append(node)",
+    "    time[0] += 1",
+    "    for child in tree[node]:",
+    "        if child != parent:",
+    "            euler_tour(tree, child, node, tour, start, end, time)",
+    "    end[node] = time[0] - 1",
+    "",
+    "# Usage:",
+    "# tree = adjacency list, node = root index, start = {}, end = {}, tour = []",
+    "# time = [0]",
+    "# euler_tour(tree, root, -1, tour, start, end, time)"
+],
+"additional_information": "Euler Tour flattens the tree, which allows subtree queries and segment tree / BIT usage."
+}
