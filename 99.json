@@ -1,0 +1,32 @@
+{
+"title": "K-th Order Statistics in BST / Treap",
+"subtitle": "Find the k-th smallest element in BST / Treap efficiently",
+"time_complexity": "O(log N) expected for Treap",
+"space_complexity": "O(N)",
+"category": "Data Structure / BST",
+"code": [
+    "class TreapNode:",
+    "    def __init__(self, key):",
+    "        self.key = key",
+    "        self.priority = random.randint(1, 1e9)",
+    "        self.left = None",
+    "        self.right = None",
+    "        self.size = 1",
+    "",
+    "def update_size(node):",
+    "    if node:",
+    "        node.size = 1 + (node.left.size if node.left else 0) + (node.right.size if node.right else 0)",
+    "",
+    "def kth(node, k):",
+    "    if not node:",
+    "        return None",
+    "    left_size = node.left.size if node.left else 0",
+    "    if k <= left_size:",
+    "        return kth(node.left, k)",
+    "    elif k == left_size + 1:",
+    "        return node.key",
+    "    else:",
+    "        return kth(node.right, k - left_size - 1)"
+],
+"additional_information": "Treap is a randomized BST. Each node keeps subtree size to compute k-th element."
+}
